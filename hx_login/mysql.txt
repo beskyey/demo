@@ -1,0 +1,10 @@
+-------数据库用于存储用户名和密码--------------------
+
+mysql> create database pbs;
+mysql> use pbs;
+mysql> create table users( id int(11) auto_increment primary key, name varchar(255) not null unique key, password varchar(255) not null default 123456, email varchar(255)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+mysql> insert into users(name,password) values("test0",md5(123456));
+
+mysql> select md5(password) from users where name="test0";
+mysql> select name from users where password=md5(123456);
